@@ -1,0 +1,20 @@
+{
+  "summary": "Retest of /settings page after dark-mode revert cleanup. Settings page renders correctly with Name, Email (disabled), Default AI model select, and Save changes button. No Theme selector present. Save action shows 'Saved' toast. No console errors, no runtime error overlay.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "test_credentials": "test@truthlens.ai / test123",
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "/settings page bug (theme not defined) is resolved. PUT /api/auth/profile works and toast success is displayed.",
+  "rca of the issue": "Previous iteration failed because leftover Theme <Select> JSX referenced undefined `theme` state (removed during dark-mode revert). Main agent deleted the JSX block; page now renders cleanly."
+}

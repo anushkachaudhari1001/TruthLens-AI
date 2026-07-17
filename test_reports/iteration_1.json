@@ -1,0 +1,36 @@
+{
+  "summary": "First-finish backend smoke test for TruthLens AI covering auth, analyze/upload, history, analytics, trending, sources, chat, reports, profile, admin, and feedback endpoints. 28/29 checks passed; the one 'failure' was a test-script schema expectation mismatch (trending returns {trending:[...], total_articles:N} instead of a bare list). All core LLM-powered flows (analyze, upload, chat) worked end-to-end with gpt-5.2. No ObjectId (_id) leakage detected. Auth guards, admin role gating (403 for non-admin), and Google auth invalid-session 401 all behave correctly. Note: auth response field is `token` (not `access_token`) and reset-password expects `token` (not `reset_token`) — main agent should ensure frontend uses these field names.",
+  "tested_scope": ["backend", "auth", "integration"],
+  "passed": [
+    "POST /auth/login (admin & user)",
+    "POST /auth/register creates user with JWT",
+    "GET /auth/me returns current user with role",
+    "POST /auth/forgot-password returns reset_token in dev mode",
+    "POST /auth/reset-password (uses `token` field)",
+    "POST /analyze returns full schema: prediction, confidence(50-99), credibility_score(0-100), risk_level, summary, reasoning, factors(8 keys), highlights, topics, recommendations, suspicious_statements, model_used, id",
+    "No ObjectId (_id) leakage in analyze response",
+    "POST /upload processes .txt file and returns analysis",
+    "GET /history returns user's articles",
+    "GET /history/{id} + POST /history/{id}/favorite toggle + DELETE /history/{id}",
+    "GET /analytics returns all required aggregate keys",
+    "GET /trending returns topic aggregations",
+    "GET /source-rating for reuters.com -> Trusted, unknown domain -> Unknown",
+    "GET /sources returns 15 seeded sources",
+    "POST /chat returns response + session_id (LLM working)",
+    "GET /reports/{id}/pdf returns application/pdf",
+    "GET /reports/{id}/json returns JSON dump",
+    "PUT /auth/profile updates name/theme/default_model",
+    "GET /admin/users & /admin/stats work for admin",
+    "GET /admin/users returns 403 for non-admin",
+    "POST /feedback saves feedback",
+    "POST /auth/google with invalid session -> 401",
+    "Protected endpoints return 401 without Bearer token"
+  ],
+  "failed": [],
+  "action_items": [
+    "Informational only: auth endpoints return JWT under `token` field, and /auth/reset-password expects `token` (not `reset_token`). Ensure frontend uses these exact field names."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "not tested"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}

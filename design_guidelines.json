@@ -1,0 +1,138 @@
+{
+  "project_name": "TruthLens AI",
+  "theme_and_archetype": {
+    "theme": "hybrid",
+    "primary_archetype": "Archetype 4: Swiss & High-Contrast (Adapted for Apple-Inspired Minimalism)",
+    "reasoning": "TruthLens requires an authoritative, objective, and clear interface to build trust in its fake news detection capabilities. Combining Apple's crystal glassmorphism with high-contrast structural typography delivers a premium, highly trustworthy 'Command Center' feel.",
+    "modes": ["light", "dark"]
+  },
+  "color_palette": {
+    "base": {
+      "primary": "#2563EB",
+      "primary_hover": "#1D4ED8",
+      "secondary": "#0F172A",
+      "secondary_hover": "#1E293B",
+      "accent": "#14B8A6",
+      "background_light": "#F8FAFC",
+      "surface_light": "#FFFFFF",
+      "background_dark": "#020617",
+      "surface_dark": "#0F172A"
+    },
+    "semantics": {
+      "success": "#22C55E",
+      "success_bg": "rgba(34, 197, 94, 0.1)",
+      "warning": "#F59E0B",
+      "warning_bg": "rgba(245, 158, 11, 0.1)",
+      "danger": "#EF4444",
+      "danger_bg": "rgba(239, 68, 68, 0.1)"
+    },
+    "rules": {
+      "gradients": "Avoid full-screen gradients. Use soft, ambient radial glows (e.g., `bg-blue-500/5` or `bg-teal-500/5`) behind main layout containers to add depth.",
+      "contrast": "Text must meet APCA standards. Always use `text-slate-900` in light mode and `text-slate-50` in dark mode for primary readings.",
+      "accent_usage": "Use the Accent Teal (#14B8A6) sparingly for micro-interactions, circular gauge highlights, and small toggle active states. Primary CTAs should use Primary Blue (#2563EB)."
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Outfit, General Sans, or Cabinet Grotesk (Banned: Inter for headings)",
+      "body": "SF Pro Display, system-ui, or Inter"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl tracking-tighter font-semibold",
+      "h2": "text-3xl sm:text-4xl tracking-tight font-medium",
+      "h3": "text-xl sm:text-2xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed text-slate-600 dark:text-slate-400",
+      "labels": "text-xs uppercase tracking-[0.2em] font-bold text-slate-500"
+    }
+  },
+  "surfaces_and_shadows": {
+    "glassmorphism": {
+      "style": "Crystal Clear Apple Variant",
+      "light_classes": "bg-white/70 backdrop-blur-2xl backdrop-saturate-150 border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "dark_classes": "bg-slate-900/60 backdrop-blur-2xl backdrop-saturate-150 border border-slate-700/50 shadow-[0_8px_30px_rgb(0,0,0,0.2)]",
+      "usage": "Use for sticky headers, floating navs, the floating AI assistant, and overlapping modal dialogs."
+    },
+    "cards": {
+      "radii": "rounded-3xl for main page sections/bento grids, rounded-xl for inner data widgets",
+      "style": "Flat with very subtle border `border-slate-200 dark:border-slate-800` and ultra-soft shadow `shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300`"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous Spacing & High Density Mixed. Use generous padding (p-8, p-12) for outer wrappers and tight gap (gap-4, gap-6) for internal bento grids.",
+    "dashboard_grid": "Mode B: The 'Control Room' Grid. `grid-cols-1 md:grid-cols-3 lg:grid-cols-4` with `gap-6`. Cards must stretch vertically `h-full`.",
+    "alignment": "Left-align text, data labels, and paragraphs. Center-align only major hero text."
+  },
+  "components": {
+    "buttons": "Rounded-full `rounded-full` or deeply rounded `rounded-xl` for premium Apple feel. High contrast hover states.",
+    "charts": "Recharts. Use monochromatic blue palettes for generic data, and semantic colors (Success/Danger) for Trust vs. Fake metrics. Remove default chart grid lines or make them extremely faint `stroke-slate-100`.",
+    "gauge": "Animated circular SVG gauge for Credibility Score (0-100). Use Framer Motion to animate from 0 to target score. Color shifts from Danger -> Warning -> Success.",
+    "xai_heatmap": "Display article text with inline `span` highlights. `bg-red-500/20` for clickbait/bias, `bg-yellow-500/20` for emotional language. Include a sidebar/tooltip explaining WHY it was highlighted.",
+    "upload_dropzone": "Large drag-and-drop area. `border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-3xl p-12 flex flex-col items-center justify-center text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors`."
+  },
+  "motion_and_interactions": {
+    "engine": "framer-motion",
+    "page_transitions": "Subtle fade and slide up (`initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}`).",
+    "stagger": "List items (history table, dashboard widgets) must stagger in."
+  },
+  "testing_requirements": {
+    "data_testid": "MANDATORY. Every interactive element (buttons, inputs, tabs, chart wrappers, report buttons) must have a `data-testid` attribute (e.g., `data-testid=\"analyze-submit-button\"`)."
+  },
+  "pages": {
+    "landing_page": {
+      "hero": "Center-aligned. Giant H1 text. Floating glassmorphism UI mockups showing the analysis in action behind the text or next to it.",
+      "features": "Bento-box grid (Mode A 'Tetris'). Asymmetrical layout. High contrast.",
+      "workflow": "Step-by-step horizontal scrolling or vertical connected line timeline."
+    },
+    "dashboard": {
+      "layout": "Sidebar navigation (collapsible). Main content area with top sticky header.",
+      "cards": "Stats cards with Recharts sparklines. Pie chart for overall Fake vs Real ratio. Line chart for activity over time."
+    },
+    "analyze_page": {
+      "layout": "Split view or focused central column. Input area on left/top, real-time analysis results appearing on right/bottom.",
+      "tabs": "Text | URL | File Upload. Use Shadcn Tabs, styled as pill-shaped segmented controls."
+    },
+    "history_and_trending": {
+      "table": "Clean, borderless rows. Badge indicators for Status. Filter dropdowns.",
+      "word_cloud": "Use a responsive D3 or simpler Recharts scatter plot if word cloud is too complex, styled minimally."
+    }
+  },
+  "media_assets": {
+    "hero_backgrounds": [
+      {
+        "url": "https://images.pexels.com/photos/12843342/pexels-photo-12843342.jpeg",
+        "description": "Abstract blue geometric pattern. Use as a very low-opacity overlay for the landing page hero section."
+      },
+      {
+        "url": "https://images.pexels.com/photos/17485706/pexels-photo-17485706.png",
+        "description": "Abstract 3D digital blocks. Can be used for decorative elements in the tech workflow section."
+      }
+    ],
+    "avatars": [
+      {
+        "url": "https://images.pexels.com/photos/381843/pexels-photo-381843.jpeg",
+        "description": "User profile avatar / professional photographer."
+      },
+      {
+        "url": "https://images.pexels.com/photos/10464787/pexels-photo-10464787.jpeg",
+        "description": "Journalist / News Reporter avatar for testimonial or user profile."
+      }
+    ],
+    "contextual_images": [
+      {
+        "url": "https://images.pexels.com/photos/5085712/pexels-photo-5085712.jpeg",
+        "description": "Man reading a newspaper. Use for the 'Why TruthLens?' or Mission section on the landing page."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1574671992738-e1a462d1ec7c",
+        "description": "'Trust No One' book edge. Conceptual image for the 'Source Reliability' feature description."
+      }
+    ]
+  },
+  "package_dependencies": [
+    "lucide-react",
+    "recharts",
+    "framer-motion",
+    "clsx",
+    "tailwind-merge"
+  ]
+}
