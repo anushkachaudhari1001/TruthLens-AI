@@ -7,108 +7,187 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?logo=fastapi)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb)
 ![OpenRouter](https://img.shields.io/badge/OpenRouter-AI-purple)
+![Render](https://img.shields.io/badge/Backend-Render-blue)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-### Detect misinformation using Open-Source Large Language Models
+### Detect misinformation using Open-Source Large Language Models (LLMs)
+
+---
+
+### 🌐 Live Demo
+
+**Frontend**
+
+https://truth-lens-ai-nine.vercel.app/
+
+**Backend API**
+
+https://truthlens-ai-backend-ldbq.onrender.com
+
+**Swagger Documentation**
+
+https://truthlens-ai-backend-ldbq.onrender.com/docs
 
 </div>
 
 ---
 
+# 📖 Table of Contents
+
+- Overview
+- Motivation
+- Core Features
+- Workflow
+- Architecture
+- Tech Stack
+- Project Structure
+- Installation
+- Environment Variables
+- Deployment
+- API Endpoints
+- Testing
+- Security
+- Screenshots
+- Future Improvements
+- Contributing
+- License
+
+---
+
 # 📖 Overview
 
-TruthLens AI is an AI-powered fake news detection platform that analyzes news articles using modern open-source Large Language Models (LLMs). It helps users determine whether news is likely genuine or misleading by generating credibility scores, explanations, summaries, and AI-powered insights.
+TruthLens AI is an AI-powered fake news detection and credibility analysis platform that helps users evaluate whether a news article is trustworthy or misleading.
 
-Users can analyze news through plain text, URLs, or uploaded documents and interact with an AI assistant to better understand the results.
+Using open-source Large Language Models through the OpenRouter API, the system analyzes news articles, generates credibility scores, explains the reasoning behind predictions, summarizes content, identifies suspicious claims, and allows users to interact with an AI assistant for deeper insights.
 
----
-
-# ✨ Features
-
-## 🤖 AI News Analysis
-
-- Fake vs Real prediction
-- Credibility Score (0–100)
-- Confidence Percentage
-- Risk Level
-- AI-generated Summary
-- Detailed Reasoning
-- Suspicious Claims Detection
-- Topic Classification
-- Fact-checking Recommendations
+Users can analyze news from plain text, URLs, or uploaded documents while maintaining a complete analysis history.
 
 ---
 
-## 💬 AI Chat Assistant
+# 🎯 Motivation
 
-- Ask follow-up questions
-- Context-aware conversations
-- AI explanations
-- Session-based chat
-- Chat history
+The rapid spread of misinformation across the internet has made it increasingly difficult for users to distinguish trustworthy news from misleading content.
+
+TruthLens AI was developed to provide an accessible AI-powered assistant that evaluates news articles, explains its reasoning, and encourages critical thinking rather than blind trust.
 
 ---
 
-## 📄 Multiple Input Methods
+# ✨ Core Features
 
-Analyze news using:
-
-- Plain Text
-- News URL
-- PDF Files
-- DOCX Files
-- TXT Files
-
----
-
-## 📊 Dashboard
-
-- User Dashboard
-- Analysis History
-- Favorite Articles
-- Quick Statistics
-- Recent Activity
-
----
-
-## 📑 PDF Report Generation
-
-Generate downloadable reports including:
-
-- Prediction
-- Credibility Score
-- Confidence
-- Summary
-- AI Reasoning
-- Recommendations
-- Source Information
+| Feature | Status |
+|----------|--------|
+| User Authentication | ✅ |
+| Fake News Detection | ✅ |
+| Credibility Score | ✅ |
+| Confidence Score | ✅ |
+| AI Generated Summary | ✅ |
+| AI Reasoning | ✅ |
+| Suspicious Claims Detection | ✅ |
+| URL Analysis | ✅ |
+| PDF Upload | ✅ |
+| DOCX Upload | ✅ |
+| TXT Upload | ✅ |
+| AI Chat Assistant | ✅ |
+| Download PDF Report | ✅ |
+| Dashboard | ✅ |
+| History | ✅ |
+| Favorites | ✅ |
+| MongoDB Storage | ✅ |
+| Responsive UI | ✅ |
 
 ---
 
-## 🔐 Authentication
+# 🔄 Workflow
 
-- User Registration
-- Secure Login
-- JWT Authentication
-- Password Hashing (bcrypt)
-- Protected Routes
+1. User registers or logs into the platform.
+2. User submits article text, URL, or document.
+3. Backend extracts article content.
+4. OpenRouter AI analyzes credibility.
+5. AI generates:
+   - Prediction
+   - Credibility Score
+   - Confidence
+   - Summary
+   - Reasoning
+   - Recommendations
+6. Analysis is stored in MongoDB Atlas.
+7. User can ask follow-up questions using the AI Chat Assistant.
+8. Reports can be downloaded as PDF.
 
 ---
 
-## 👨‍💼 Admin Features
+# 🏗️ Architecture
 
-- User Management
-- Platform Statistics
-- Feedback Monitoring
-- Article Management
-
----
-
-# 🏗️ Project Structure
-
+```text
+                    +-----------------------+
+                    |    React Frontend     |
+                    |       (Vercel)        |
+                    +-----------+-----------+
+                                |
+                                |
+                                ▼
+                    +-----------------------+
+                    |   FastAPI Backend     |
+                    |      (Render)         |
+                    +-----------+-----------+
+                                |
+                +---------------+---------------+
+                |                               |
+                ▼                               ▼
+      +------------------+          +-----------------------+
+      | MongoDB Atlas    |          | OpenRouter API        |
+      | User Database    |          | AI Reasoning Model    |
+      +------------------+          +-----------------------+
 ```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React 19
+- React Router
+- Tailwind CSS
+- ShadCN UI
+- Axios
+- Framer Motion
+- Recharts
+
+## Backend
+
+- FastAPI
+- Python
+- JWT Authentication
+- bcrypt
+- Motor
+- ReportLab
+- PyPDF
+- python-docx
+
+## Artificial Intelligence
+
+- OpenRouter API
+- Qwen3 32B (Free Model)
+- Open-source Large Language Models
+
+## Database
+
+- MongoDB Atlas
+
+## Deployment
+
+- Vercel
+- Render
+
+---
+
+# 📂 Project Structure
+
+```text
 TruthLens-AI
 │
 ├── backend
@@ -122,59 +201,16 @@ TruthLens-AI
 │   └── package.json
 │
 ├── docs
-│
 ├── memory
-│
+├── tests
 └── README.md
 ```
 
 ---
 
-# 🛠️ Tech Stack
-
-## Frontend
-
-- React 19
-- React Router 7
-- Tailwind CSS
-- ShadCN UI
-- Axios
-- Framer Motion
-- Recharts
-
----
-
-## Backend
-
-- FastAPI
-- Python
-- MongoDB
-- Motor
-- JWT
-- bcrypt
-- ReportLab
-- PyPDF
-- python-docx
-
----
-
-## Artificial Intelligence
-
-- OpenRouter API
-- OpenAI Python SDK
-- Qwen3 32B (Free Model)
-
----
-
-## Database
-
-- MongoDB
-
----
-
 # 🚀 Installation
 
-## 1. Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/anushkachaudhari1001/TruthLens-AI.git
@@ -184,7 +220,7 @@ cd TruthLens-AI
 
 ---
 
-## 2. Backend Setup
+## Backend Setup
 
 ```bash
 cd backend
@@ -194,13 +230,13 @@ pip install -r requirements.txt
 uvicorn server:app --reload
 ```
 
-Backend:
+Backend
 
 ```
 http://127.0.0.1:8000
 ```
 
-Swagger:
+Swagger
 
 ```
 http://127.0.0.1:8000/docs
@@ -208,17 +244,17 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 3. Frontend Setup
+## Frontend Setup
 
 ```bash
 cd frontend
 
-npm install --legacy-peer-deps
+npm install
 
 npm start
 ```
 
-Frontend:
+Frontend
 
 ```
 http://localhost:3000
@@ -228,19 +264,30 @@ http://localhost:3000
 
 # ⚙️ Environment Variables
 
-Create a `.env` file inside the **backend** folder.
+Create a `.env` file inside the backend folder.
 
 ```env
 MONGO_URL=your_mongodb_connection_string
 
-DB_NAME=truthlens
+DB_NAME=truthlens_ai
 
 JWT_SECRET=your_secret_key
 
 OPENROUTER_API_KEY=your_openrouter_api_key
 
-CORS_ORIGINS=http://localhost:3000
+CORS_ORIGINS=http://localhost:3000,https://truth-lens-ai-nine.vercel.app
 ```
+
+---
+
+# ☁️ Deployment
+
+| Component | Platform |
+|------------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
+| AI Model | OpenRouter |
 
 ---
 
@@ -248,67 +295,84 @@ CORS_ORIGINS=http://localhost:3000
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/register` | POST | Register user |
-| `/api/login` | POST | User login |
-| `/api/analyze` | POST | Analyze article |
+| `/api/register` | POST | Register User |
+| `/api/login` | POST | User Login |
+| `/api/analyze` | POST | Analyze News |
 | `/api/chat` | POST | AI Chat |
-| `/api/history` | GET | Analysis history |
-| `/api/favorites` | GET | Favorite articles |
-| `/api/report/{id}` | GET | Download PDF report |
+| `/api/history` | GET | User History |
+| `/api/history/{id}` | DELETE | Delete History |
+| `/api/report/{id}` | GET | Download PDF |
+| `/api/favorites` | GET | Favorite Articles |
 
 ---
 
-# 🧪 Testing
+# 🧪 Testing Checklist
 
-Verify the application by:
-
-- Registering a new user
-- Logging in
-- Analyzing article text
-- Analyzing URLs
-- Uploading PDF/DOCX/TXT files
-- Chatting with AI
-- Downloading PDF reports
-- Viewing History
-- Managing Favorites
-
----
-
-# 📚 Documentation
-
-Additional project documentation is available in the `docs` folder.
-
-- API.md
-- ARCHITECTURE.md
-- DATABASE.md
-- DEPLOYMENT.md
-- TROUBLESHOOTING.md
-- WORKFLOW.md
+- ✅ Register a new account
+- ✅ Login
+- ✅ Analyze article text
+- ✅ Analyze URL
+- ✅ Upload PDF
+- ✅ Upload DOCX
+- ✅ Upload TXT
+- ✅ Chat with AI
+- ✅ Download PDF Report
+- ✅ View History
+- ✅ Add Favorites
+- ✅ Delete History
 
 ---
 
 # 🔒 Security
 
 - JWT Authentication
-- Password Hashing using bcrypt
+- Password Hashing (bcrypt)
+- Protected API Routes
 - Environment Variables
-- Protected API Endpoints
-- MongoDB Authentication Support
+- MongoDB Atlas Authentication
+- CORS Protection
 
 ---
 
 # 📸 Screenshots
 
-Add screenshots of:
+> Add screenshots inside a `screenshots/` folder and update the image paths below.
 
-- Landing Page
-- Login Page
-- Dashboard
-- News Analysis
-- AI Chat
-- PDF Report
-- History
-- Admin Dashboard
+### Landing Page
+
+![Landing Page 1](TruthLens_ss/home.png)
+
+### Login Page
+
+![Login Page 1](TruthLens_ss/login.png)
+
+### Dashboard
+
+![Dashboard Page 1](TruthLens_ss/dashboard.png)
+
+![Dashboard Page 2](TruthLens_ss/dashboard(1).png)
+
+### AI Analysis
+
+![Analysis Page 1](TruthLens_ss/analyze.png)
+
+![Analysis Page 2](TruthLens_ss/Analyze(1).png)
+
+![Analysis Page 3](TruthLens_ss/Analyze(2).png)
+
+### AI Chat
+
+![AI Chat Page 1](TruthLens_ss/assistant.png)
+
+![AI Chat Page 2](TruthLens_ss/assistant(1).png)
+
+### History
+
+![History Page 1](TruthLens_ss/history.png)
+
+### PDF Report
+
+![Report Page 1](TruthLens_ss/reports.png)
 
 ---
 
@@ -322,12 +386,13 @@ Add screenshots of:
 - Multi-language Support
 - Source Reputation Database
 - Multiple AI Model Selection
+- Voice-based Analysis
 
 ---
 
 # 👩‍💻 Developer
 
-Developed as a hackathon project focused on combating misinformation using modern open-source AI technologies.
+Developed as a hackathon project focused on combating misinformation using Artificial Intelligence, FastAPI, React, MongoDB Atlas, and OpenRouter.
 
 ---
 
@@ -335,11 +400,11 @@ Developed as a hackathon project focused on combating misinformation using moder
 
 Contributions are welcome.
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push the branch
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
 
 ---
 
@@ -351,7 +416,7 @@ This project is licensed under the MIT License.
 
 <div align="center">
 
-⭐ If you found this project useful, consider giving it a star!
+### ⭐ If you found this project useful, please consider giving it a Star!
 
 **TruthLens AI — Helping users identify misinformation through AI-powered credibility analysis.**
 
