@@ -17,18 +17,15 @@
 
 ---
 
-### 🌐 Live Demo
+## 🌐 Live Demo
 
-**Frontend**
-
+**Frontend:**  
 https://truth-lens-ai-nine.vercel.app/
 
-**Backend API**
-
+**Backend API:**  
 https://truthlens-ai-backend-ldbq.onrender.com
 
-**Swagger Documentation**
-
+**Swagger Documentation:**  
 https://truthlens-ai-backend-ldbq.onrender.com/docs
 
 </div>
@@ -39,6 +36,7 @@ https://truthlens-ai-backend-ldbq.onrender.com/docs
 
 - Overview
 - Motivation
+- Key Use Cases
 - Core Features
 - Workflow
 - Architecture
@@ -51,6 +49,7 @@ https://truthlens-ai-backend-ldbq.onrender.com/docs
 - Testing
 - Security
 - Screenshots
+- Assumptions & Limitations
 - Future Improvements
 - Contributing
 - License
@@ -59,19 +58,36 @@ https://truthlens-ai-backend-ldbq.onrender.com/docs
 
 # 📖 Overview
 
-TruthLens AI is an AI-powered fake news detection and credibility analysis platform that helps users evaluate whether a news article is trustworthy or misleading.
+TruthLens AI is an AI-powered fake news detection and credibility analysis platform designed to help users determine whether online news content is trustworthy or potentially misleading.
 
-Using open-source Large Language Models through the OpenRouter API, the system analyzes news articles, generates credibility scores, explains the reasoning behind predictions, summarizes content, identifies suspicious claims, and allows users to interact with an AI assistant for deeper insights.
+The platform leverages open-source Large Language Models (LLMs) through the OpenRouter API to analyze news articles and generate credibility scores, confidence levels, AI-generated summaries, detailed reasoning, suspicious claim detection, and actionable recommendations.
 
-Users can analyze news from plain text, URLs, or uploaded documents while maintaining a complete analysis history.
+Users can analyze news using plain text, article URLs, or uploaded documents while maintaining a personalized history of previous analyses. An integrated AI Chat Assistant enables users to ask follow-up questions and better understand the AI's decisions.
+
+The goal of TruthLens AI is not to replace human judgment but to assist users in making more informed decisions when consuming digital information.
 
 ---
 
 # 🎯 Motivation
 
-The rapid spread of misinformation across the internet has made it increasingly difficult for users to distinguish trustworthy news from misleading content.
+The rapid spread of misinformation across social media and digital news platforms has made it increasingly difficult for people to distinguish factual information from misleading or manipulated content.
 
-TruthLens AI was developed to provide an accessible AI-powered assistant that evaluates news articles, explains its reasoning, and encourages critical thinking rather than blind trust.
+False information can influence public opinion, create panic, spread rumors, and affect critical decisions in areas such as healthcare, education, finance, and politics.
+
+TruthLens AI was developed to address this challenge by providing an intelligent AI-powered assistant that evaluates news credibility, explains its reasoning transparently, and encourages users to think critically before trusting or sharing information.
+
+---
+
+# 🎯 Key Use Cases
+
+TruthLens AI can be used in a variety of real-world scenarios, including:
+
+- 📰 Verifying online news articles before sharing them.
+- 🎓 Helping students evaluate the credibility of research sources.
+- 👨‍💼 Assisting journalists with preliminary credibility assessment.
+- 🏢 Supporting organizations in identifying potentially misleading information.
+- 📱 Helping everyday users quickly assess online news credibility.
+- 📑 Generating downloadable AI-powered credibility reports for documentation and reference.
 
 ---
 
@@ -103,19 +119,20 @@ TruthLens AI was developed to provide an accessible AI-powered assistant that ev
 # 🔄 Workflow
 
 1. User registers or logs into the platform.
-2. User submits article text, URL, or document.
-3. Backend extracts article content.
-4. OpenRouter AI analyzes credibility.
-5. AI generates:
+2. User submits news through plain text, a news URL, or an uploaded document.
+3. The backend extracts and preprocesses the article content.
+4. The OpenRouter API sends the request to the selected open-source Large Language Model.
+5. The AI generates:
    - Prediction
    - Credibility Score
-   - Confidence
+   - Confidence Score
    - Summary
-   - Reasoning
+   - Detailed Reasoning
+   - Suspicious Claims
    - Recommendations
-6. Analysis is stored in MongoDB Atlas.
-7. User can ask follow-up questions using the AI Chat Assistant.
-8. Reports can be downloaded as PDF.
+6. The analysis is securely stored in MongoDB Atlas.
+7. Users can interact with the AI Chat Assistant for additional clarification.
+8. PDF reports can be generated and downloaded for future reference.
 
 ---
 
@@ -172,7 +189,7 @@ TruthLens AI was developed to provide an accessible AI-powered assistant that ev
 
 - OpenRouter API
 - Qwen3 32B (Free Model)
-- Open-source Large Language Models
+- Open-source Large Language Models (LLMs)
 
 ## Database
 
@@ -210,7 +227,7 @@ TruthLens-AI
 
 # 🚀 Installation
 
-## Clone Repository
+## 1. Clone Repository
 
 ```bash
 git clone https://github.com/anushkachaudhari1001/TruthLens-AI.git
@@ -220,7 +237,7 @@ cd TruthLens-AI
 
 ---
 
-## Backend Setup
+## 2. Backend Setup
 
 ```bash
 cd backend
@@ -236,7 +253,7 @@ Backend
 http://127.0.0.1:8000
 ```
 
-Swagger
+Swagger Documentation
 
 ```
 http://127.0.0.1:8000/docs
@@ -244,7 +261,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Frontend Setup
+## 3. Frontend Setup
 
 ```bash
 cd frontend
@@ -264,7 +281,7 @@ http://localhost:3000
 
 # ⚙️ Environment Variables
 
-Create a `.env` file inside the backend folder.
+Create a `.env` file inside the **backend** folder.
 
 ```env
 MONGO_URL=your_mongodb_connection_string
@@ -282,6 +299,8 @@ CORS_ORIGINS=http://localhost:3000,https://truth-lens-ai-nine.vercel.app
 
 # ☁️ Deployment
 
+The application is deployed using free cloud services.
+
 | Component | Platform |
 |------------|----------|
 | Frontend | Vercel |
@@ -289,108 +308,180 @@ CORS_ORIGINS=http://localhost:3000,https://truth-lens-ai-nine.vercel.app
 | Database | MongoDB Atlas |
 | AI Model | OpenRouter |
 
+### Live Deployment
+
+**Frontend**
+
+https://truth-lens-ai-nine.vercel.app/
+
+**Backend**
+
+https://truthlens-ai-backend-ldbq.onrender.com
+
+**Swagger API**
+
+https://truthlens-ai-backend-ldbq.onrender.com/docs
+
 ---
 
 # 📡 API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/register` | POST | Register User |
-| `/api/login` | POST | User Login |
-| `/api/analyze` | POST | Analyze News |
-| `/api/chat` | POST | AI Chat |
-| `/api/history` | GET | User History |
-| `/api/history/{id}` | DELETE | Delete History |
-| `/api/report/{id}` | GET | Download PDF |
-| `/api/favorites` | GET | Favorite Articles |
+| `/api/register` | POST | Register a new user |
+| `/api/login` | POST | Authenticate user |
+| `/api/analyze` | POST | Analyze news article |
+| `/api/chat` | POST | Chat with AI Assistant |
+| `/api/history` | GET | Retrieve analysis history |
+| `/api/history/{id}` | DELETE | Delete analysis |
+| `/api/report/{id}` | GET | Download PDF report |
+| `/api/favorites` | GET | Retrieve favorite analyses |
 
 ---
 
 # 🧪 Testing Checklist
 
-- ✅ Register a new account
-- ✅ Login
-- ✅ Analyze article text
-- ✅ Analyze URL
+The following functionality has been tested successfully:
+
+- ✅ User Registration
+- ✅ User Login
+- ✅ JWT Authentication
+- ✅ Analyze Plain Text
+- ✅ Analyze News URL
 - ✅ Upload PDF
 - ✅ Upload DOCX
 - ✅ Upload TXT
-- ✅ Chat with AI
+- ✅ AI Fake News Detection
+- ✅ AI Chat Assistant
 - ✅ Download PDF Report
-- ✅ View History
-- ✅ Add Favorites
+- ✅ Analysis History
+- ✅ Favorites
 - ✅ Delete History
+- ✅ Responsive User Interface
 
 ---
 
 # 🔒 Security
 
-- JWT Authentication
-- Password Hashing (bcrypt)
-- Protected API Routes
-- Environment Variables
+TruthLens AI follows several security best practices:
+
+- JWT-based Authentication
+- Password Hashing using bcrypt
+- Protected API Endpoints
+- Environment Variables for Sensitive Keys
 - MongoDB Atlas Authentication
 - CORS Protection
+- Secure Password Storage
+- Token-based User Sessions
 
 ---
 
 # 📸 Screenshots
 
-### Landing Page
+## 🏠 Landing Page
 
-![Landing Page 1](TruthLensAI_ss/home.png)
+![Landing Page](TruthLensAI_ss/home.png)
 
-### Login Page
+---
 
-![Login Page 1](TruthLensAI_ss/login.png)
+## 🔐 Login Page
 
-### Dashboard
+![Login](TruthLensAI_ss/login.png)
 
-![Dashboard Page 1](TruthLensAI_ss/dashboard.png)
+---
 
-![Dashboard Page 2](TruthLensAI_ss/dashboard(1).png)
+## 📊 Dashboard
 
-### AI Analysis
+![Dashboard 1](TruthLensAI_ss/dashboard.png)
 
-![Analysis Page 1](TruthLensAI_ss/analyze.png)
+![Dashboard 2](TruthLensAI_ss/dashboard(1).png)
 
-![Analysis Page 2](TruthLensAI_ss/Analyze(1).png)
+---
 
-![Analysis Page 3](TruthLensAI_ss/Analyze(2).png)
+## 📰 News Analysis
 
-### AI Chat
+![Analysis 1](TruthLensAI_ss/analyze.png)
 
-![AI Chat Page 1](TruthLensAI_ss/assistant.png)
+![Analysis 2](TruthLensAI_ss/Analyze(1).png)
 
-![AI Chat Page 2](TruthLensAI_ss/assistant(1).png)
+![Analysis 3](TruthLensAI_ss/Analyze(2).png)
 
-### History
+---
 
-![History Page 1](TruthLensAI_ss/history.png)
+## 🤖 AI Chat Assistant
 
-### PDF Report
+![Assistant 1](TruthLensAI_ss/assistant.png)
 
-![Report Page 1](TruthLensAI_ss/reports.png)
+![Assistant 2](TruthLensAI_ss/assistant(1).png)
+
+---
+
+## 📜 History
+
+![History](TruthLensAI_ss/history.png)
+
+---
+
+## 📄 PDF Report
+
+![Report](TruthLensAI_ss/reports.png)
+
+---
+
+# ⚠️ Assumptions & Limitations
+
+### Assumptions
+
+- Users provide readable news content or accessible URLs.
+- Internet connectivity is available for AI inference through OpenRouter.
+- MongoDB Atlas remains accessible during runtime.
+- The selected open-source AI model is available through the OpenRouter API.
+
+### Current Limitations
+
+- AI predictions should be treated as decision-support rather than absolute truth.
+- The platform currently relies on LLM reasoning instead of real-time external fact-checking databases.
+- Some websites may restrict article extraction.
+- Performance depends on the response time of external AI APIs.
+- Free-tier cloud deployments (Render and Vercel) may experience cold starts after periods of inactivity.
 
 ---
 
 # 🚀 Future Improvements
 
-- Browser Extension
-- Mobile Application
-- OCR Support
-- Live Fact-check APIs
-- Explainable AI
-- Multi-language Support
-- Source Reputation Database
-- Multiple AI Model Selection
-- Voice-based Analysis
+The following enhancements are planned for future versions:
+
+- 🌍 Multi-language Support
+- 🌐 Browser Extension
+- 📱 Mobile Application
+- 🖼 OCR Support for Images
+- 🎙 Voice-based News Analysis
+- 🔗 Integration with Live Fact-check APIs
+- 🤖 Multiple AI Model Selection
+- 📊 Explainable AI Visualizations
+- ⭐ Source Reputation Database
+- 🔔 Real-time Fake News Alerts
+- 👥 Collaborative Fact Verification
 
 ---
 
 # 👩‍💻 Developer
 
-Developed as a hackathon project focused on combating misinformation using Artificial Intelligence, FastAPI, React, MongoDB Atlas, and OpenRouter.
+**TruthLens AI** was developed as a hackathon project to demonstrate the practical application of Artificial Intelligence in combating misinformation.
+
+The project combines modern web technologies with open-source Large Language Models to deliver an interactive platform capable of analyzing news credibility, generating AI-powered explanations, and assisting users in making informed decisions.
+
+**Technology Stack**
+
+- React 19
+- FastAPI
+- Python
+- MongoDB Atlas
+- OpenRouter API
+- Qwen3 32B (Free LLM)
+- Tailwind CSS
+- Render
+- Vercel
 
 ---
 
@@ -399,7 +490,7 @@ Developed as a hackathon project focused on combating misinformation using Artif
 Contributions are welcome.
 
 1. Fork the repository.
-2. Create a feature branch.
+2. Create a new feature branch.
 3. Commit your changes.
 4. Push the branch.
 5. Open a Pull Request.
@@ -414,8 +505,12 @@ This project is licensed under the MIT License.
 
 <div align="center">
 
-### ⭐ If you found this project useful, please consider giving it a Star!
+## ⭐ If you found this project useful, please consider giving it a Star!
 
-**TruthLens AI — Helping users identify misinformation through AI-powered credibility analysis.**
+### TruthLens AI
+
+**Helping users identify misinformation through AI-powered credibility analysis.**
+
+Built with ❤️ using React, FastAPI, MongoDB Atlas, OpenRouter, Render, and Vercel.
 
 </div>
