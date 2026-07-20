@@ -336,43 +336,41 @@ CORS_ORIGINS=http://localhost:3000,https://truth-lens-ai-nine.vercel.app
 
 # 📸 Screenshots
 
-> Add screenshots inside a `screenshots/` folder and update the image paths below.
-
 ### Landing Page
 
-![Landing Page 1](TruthLens_ss/home.png)
+![Landing Page 1](TruthLensAI_ss/home.png)
 
 ### Login Page
 
-![Login Page 1](TruthLens_ss/login.png)
+![Login Page 1](TruthLensAI_ss/login.png)
 
 ### Dashboard
 
-![Dashboard Page 1](TruthLens_ss/dashboard.png)
+![Dashboard Page 1](TruthLensAI_ss/dashboard.png)
 
-![Dashboard Page 2](TruthLens_ss/dashboard(1).png)
+![Dashboard Page 2](TruthLensAI_ss/dashboard(1).png)
 
 ### AI Analysis
 
-![Analysis Page 1](TruthLens_ss/analyze.png)
+![Analysis Page 1](TruthLensAI_ss/analyze.png)
 
-![Analysis Page 2](TruthLens_ss/Analyze(1).png)
+![Analysis Page 2](TruthLensAI_ss/Analyze(1).png)
 
-![Analysis Page 3](TruthLens_ss/Analyze(2).png)
+![Analysis Page 3](TruthLensAI_ss/Analyze(2).png)
 
 ### AI Chat
 
-![AI Chat Page 1](TruthLens_ss/assistant.png)
+![AI Chat Page 1](TruthLensAI_ss/assistant.png)
 
-![AI Chat Page 2](TruthLens_ss/assistant(1).png)
+![AI Chat Page 2](TruthLensAI_ss/assistant(1).png)
 
 ### History
 
-![History Page 1](TruthLens_ss/history.png)
+![History Page 1](TruthLensAI_ss/history.png)
 
 ### PDF Report
 
-![Report Page 1](TruthLens_ss/reports.png)
+![Report Page 1](TruthLensAI_ss/reports.png)
 
 ---
 

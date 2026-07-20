@@ -45,7 +45,7 @@ export default function Dashboard() {
           <h1 className="font-display text-4xl font-semibold tracking-tight">Welcome, {user?.name?.split(" ")[0]}.</h1>
           <p className="text-slate-600 mt-2">Here's your fake-news detection intelligence.</p>
         </div>
-        <Link to="/analyze"><Button className="bg-blue-600 hover:bg-blue-700 rounded-full h-11 px-6" data-testid="dash-analyze-btn"><Zap className="w-4 h-4 mr-2" /> New analysis</Button></Link>
+        <Link to="/analyze"><Button className="bg-blue-600 hover:bg-blue-700 rounded-full h-11 px-6" data-testid="dash-analyze-btn"><Zap className="w-4 h-4 mr-2" /> Upload New analysis</Button></Link>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
